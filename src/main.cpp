@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/*
+  참고로, Windows 운영체제에서는
+  unistd.h 헤더가 제공되지 않는 이슈로 인해,
+  프로젝트가 macos 에서 실행 가능하도록 빌드 및 디버깅 환경 설정을 수정함.
+*/
+
 void foo() { printf("execute foo\n"); }
 
 void bar() { printf("execute bar\n"); }
