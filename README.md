@@ -1,2 +1,4 @@
-# cpp-process-example
-A repository for testing processes with C++
+
+# Process + CPP Test
+
+Repository for testing processes with C++
