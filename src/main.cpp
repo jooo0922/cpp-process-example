@@ -16,19 +16,37 @@ int main() {
     현재 실행 중인 프로세스가 자식 프로세스이면 0을 반환함.
   */
   if (fork() == 0) {
-    /*
-      현재 실행 중인 프로세스가 자식 프로세스임을 검사한 후,
-      자식 프로세스의 PID 출력
-    */
-    printf("child pid is %d\n", getpid());
-    foo();
+    if (fork() == 0) {
+      /*
+        현재 실행 중인 프로세스가 자식 프로세스의 자식 프로세스임을 검사한 후,
+        자식 프로세스의 자식 프로세스의 PID 출력
+      */
+      printf("child of child pid is %d\n", getpid());
+      foo();
+    } else {
+      /*
+        현재 실행 중인 프로세스가 자식 프로세스임을 검사한 후,
+        자식 프로세스의 PID 출력
+      */
+      printf("child pid is %d\n", getpid());
+      foo();
+    }
   } else {
-    /*
-      현재 실행 중인 프로세스가 부모 프로세스임을 검사한 후,
-      부모 프로세스의 PID 출력
-    */
-    printf("parent pid is %d\n", getpid());
-    foo();
+    if (fork() == 0) {
+      /*
+        현재 실행 중인 프로세스가 또 다른 복제된 자식 프로세스임을 검사한 후,
+        자식 프로세스의 PID 출력
+      */
+      printf("child pid is %d\n", getpid());
+      foo();
+    } else {
+      /*
+        현재 실행 중인 프로세스가 부모 프로세스임을 검사한 후,
+        부모 프로세스의 PID 출력
+      */
+      printf("parent pid is %d\n", getpid());
+      foo();
+    }
   }
 
   return 0;
