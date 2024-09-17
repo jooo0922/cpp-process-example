@@ -2,8 +2,6 @@
 #include <unistd.h>
 
 int main() {
-  printf("hello, os\n");
-
   // 현재 실행되는 프로그램의 프로세스(= 부모 프로세스) PID 출력
   printf("parent pid is %d\n", getpid());
 
@@ -24,6 +22,8 @@ int main() {
     */
     printf("child pid is %d\n", getpid());
   }
+
+  printf("execute!\n");
 
   return 0;
 }
